@@ -41,6 +41,9 @@ class People(db.Model):
         return {
             "id": self.id,
             "name": self.name,
+            "birth_year": self.birth_year,
+            "eye_color": self.eye_color
+            
             # do not serialize the password, its a security breach
         }
 
