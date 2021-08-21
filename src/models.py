@@ -20,12 +20,76 @@ class User(db.Model):
 
 class People(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(250), unique=True, nullable=False)
+    name = db.Column(db.String(250), unique=True, nullable=False) 
+    birth_year =  db.Column(db.String(250), unique=True, nullable=False) 
+    eye_color = db.Column(db.String(250), unique=True, nullable=False) 
+    gender = db.Column(db.String(250), unique=True, nullable=False) 
+    hair_color = db.Column(db.String(250), unique=True, nullable=False) 
+    height = db.Column(db.String(250), unique=True, nullable=False) 
+    mass = db.Column(db.String(250), unique=True, nullable=False) 
+    skin_color = db.Column(db.String(250), unique=True, nullable=False) 
+    homeworld_id = db.Column(db.Integer, db.ForeignKey('planet.id'))
+    homeworld = db.relationship("Planet")
+    url = db.Column(db.String(250), unique=True, nullable=False) 
+    created = db.Column(db.String(250), unique=True, nullable=False) 
+    edited = db.Column(db.String(250), unique=True, nullable=False) 
+
+    def __repr__(self):
+        return '<People %r>' % self.name
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            # do not serialize the password, its a security breach
+        }
 
 class Planet(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(250), unique=True, nullable=False)
+    name =  db.Column(db.String(250), unique=True, nullable=False) 
+    diameter = db.Column(db.String(250), unique=True, nullable=False) 
+    rotation_period = db.Column(db.String(250), unique=True, nullable=False) 
+    orbital_period = db.Column(db.String(250), unique=True, nullable=False) 
+    gravity = db.Column(db.String(250), unique=True, nullable=False) 
+    population = db.Column(db.String(250), unique=True, nullable=False) 
+    climate = db.Column(db.String(250), unique=True, nullable=False) 
+    terrain = db.Column(db.String(250), unique=True, nullable=False) 
+    surface_water = db.Column(db.String(250), unique=True, nullable=False) 
+    url = db.Column(db.String(250), unique=True, nullable=False) 
+
+    def __repr__(self):
+        return '<Planet %r>' % self.name
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            # do not serialize the password, its a security breach
+        }
 
 class Vehicle(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(250), unique=True, nullable=False)
+    model = db.Column(db.String(250), unique=True, nullable=False)
+    vehicle_class = db.Column(db.String(250), unique=True, nullable=False)
+    manufacturer = db.Column(db.String(250), unique=True, nullable=False)
+    length = db.Column(db.String(250), unique=True, nullable=False)
+    cost_in_credits = db.Column(db.String(250), unique=True, nullable=False) 
+    crew = db.Column(db.String(250), unique=True, nullable=False) 
+    passengers = db.Column(db.String(250), unique=True, nullable=False) 
+    max_atmosphering_speed = db.Column(db.String(250), unique=True, nullable=False) 
+    cargo_capacity = db.Column(db.String(250), unique=True, nullable=False) 
+    consumables = db.Column(db.String(250), unique=True, nullable=False) 
+    url = db.Column(db.String(250), unique=True, nullable=False) 
+    created = db.Column(db.String(250), unique=True, nullable=False) 
+    edited = db.Column(db.String(250), unique=True, nullable=False) 
+
+    def __repr__(self):
+        return '<Vehicle %r>' % self.name
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            # do not serialize the password, its a security breach
+        }
