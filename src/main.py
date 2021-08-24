@@ -8,7 +8,7 @@ from flask_swagger import swagger
 from flask_cors import CORS
 from utils import APIException, generate_sitemap
 from admin import setup_admin
-from models import db, User
+from models import db, User, People, Planet
 #from models import Person
 
 app = Flask(__name__)
@@ -39,28 +39,24 @@ def handle_hello():
 
     return jsonify(response_body), 200
 
-@app.route('/People', methods=['GET'])
+@app.route('/people', methods=['GET'])
 def handle_people():
-    people_quary = people.quary.all()
-    response_body = [x.serialize() for x in people_quary]
+    people_query = People.query.all()
+    response_body = [x.serialize() for x in people_query]
 
     return jsonify(response_body), 200
 
-@app.route('/Planet', methods=['GET'])
+@app.route('/planet', methods=['GET'])
 def handle_planet():
-
-    response_body = {
-        "msg": "Hello, this is your GET /user response "
-    }
+    planet_query = Planet.query.all()
+    response_body = [x.serialize() for x in planet_query]
 
     return jsonify(response_body), 200
 
-@app.route('/Vehicle', methods=['GET'])
+@app.route('/vehicle', methods=['GET'])
 def handle_vehicle():
-
-    response_body = {
-        "msg": "Hello, this is your GET /user response "
-    }
+    vehicle_query = Vehicle.query.all()
+    response_body = [x.serialize() for x in vehicle_query]
 
     return jsonify(response_body), 200
 

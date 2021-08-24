@@ -69,7 +69,7 @@ class Planet(db.Model):
     url = db.Column(db.String(250), unique=True, nullable=False) 
 
     def __repr__(self):
-        return '<Planet %r>' % self.name
+        return '<Planet %r>' % {self.name}-{self.id}
 
     def serialize(self):
         return {
@@ -96,7 +96,7 @@ class Vehicle(db.Model):
     edited = db.Column(db.String(250), unique=True, nullable=False) 
 
     def __repr__(self):
-        return '<Vehicle %r>' % self.name
+        return '<Vehicle %r>' % {self.name}-{self.id}
 
     def serialize(self):
         return {
