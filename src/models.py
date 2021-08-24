@@ -15,6 +15,7 @@ class User(db.Model):
         return {
             "id": self.id,
             "email": self.email,
+            "is_active": self.is_active
             # do not serialize the password, its a security breach
         }
 
@@ -35,16 +36,23 @@ class People(db.Model):
     edited = db.Column(db.String(250), unique=True, nullable=False) 
 
     def __repr__(self):
-        return '<People %r>' % self.name
+        return '<People %r' % {self.name}-{self.id}>
 
     def serialize(self):
         return {
             "id": self.id,
             "name": self.name,
             "birth_year": self.birth_year,
-            "eye_color": self.eye_color
+            "eye_color": self.eye_color,
+            "gender": self.gender,
+            "hair_color": self.hair_color,
+            "height": self.height,
+            "mass": self.mass,
+            "skin_color": self.skin_color,
+            "url": self.url,
+            "created": self.created,
+            "edited": self.edited
             
-            # do not serialize the password, its a security breach
         }
 
 class Planet(db.Model):
