@@ -36,7 +36,7 @@ class People(db.Model):
     edited = db.Column(db.String(250), unique=True, nullable=False) 
 
     def __repr__(self):
-        return '<People %r' % {self.name}-{self.id}>
+        return '<People %r>' % {self.name}-{self.id}
 
     def serialize(self):
         return {

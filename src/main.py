@@ -40,14 +40,14 @@ def handle_hello():
     return jsonify(response_body), 200
 
 @app.route('/People', methods=['GET'])
-def handle_hello():
+def handle_people():
     people_quary = people.quary.all()
     response_body = [x.serialize() for x in people_quary]
 
     return jsonify(response_body), 200
 
 @app.route('/Planet', methods=['GET'])
-def handle_hello():
+def handle_planet():
 
     response_body = {
         "msg": "Hello, this is your GET /user response "
@@ -56,7 +56,7 @@ def handle_hello():
     return jsonify(response_body), 200
 
 @app.route('/Vehicle', methods=['GET'])
-def handle_hello():
+def handle_vehicle():
 
     response_body = {
         "msg": "Hello, this is your GET /user response "
