@@ -75,7 +75,15 @@ class Planet(db.Model):
         return {
             "id": self.id,
             "name": self.name,
-            # do not serialize the password, its a security breach
+            "diameter" : self.diameter, 
+            "rotation_period" : self.rotation_period, 
+            "orbital_period" : self.orbital_period, 
+            "gravity" : self.gravity,
+            "population" : self.population, 
+            "climate" : self.climate,
+            "terrain" : self.terrain,
+            "surface_water" : self.surface_water,
+            "url" : self.url
         }
 
 class Vehicle(db.Model):
@@ -102,5 +110,17 @@ class Vehicle(db.Model):
         return {
             "id": self.id,
             "name": self.name,
-            # do not serialize the password, its a security breach
+            "model" : self.model,
+            "vehicle_class" : self.vehicle_class,
+            "manufacturer" : self.manufacturer,
+            "length" : self.length,
+            "cost_in_credits" : self.cost_in_credits, 
+            "crew" : self.crew,
+            "passengers" : self.passengers, 
+            "max_atmosphering_speed" : self.max_atmosphering_speed,
+            "cargo_capacity" : self.cargo_capacity,
+            "consumables" : self.consumables, 
+            "url" : self.url,
+            "created" : self.created, 
+            "edited" : self.edited
         }
