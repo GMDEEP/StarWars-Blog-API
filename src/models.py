@@ -9,7 +9,7 @@ class User(db.Model):
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
     def __repr__(self):
-        return '<User %r>' % self.username
+        return f'<User {self.id}>'
 
     def serialize(self):
         return {
@@ -36,7 +36,7 @@ class People(db.Model):
     edited = db.Column(db.String(250), unique=True, nullable=False) 
 
     def __repr__(self):
-        return '<People %r>' % {self.name}-{self.id}
+        return f'<People {self.name}-{self.id}>'
 
     def serialize(self):
         return {
@@ -69,7 +69,7 @@ class Planet(db.Model):
     url = db.Column(db.String(250), unique=True, nullable=False) 
 
     def __repr__(self):
-        return '<Planet %r>' % {self.name}-{self.id}
+        return f'<Planet {self.name}-{self.id}>'
 
     def serialize(self):
         return {
@@ -104,7 +104,7 @@ class Vehicle(db.Model):
     edited = db.Column(db.String(250), unique=True, nullable=False) 
 
     def __repr__(self):
-        return '<Vehicle %r>' % {self.name}-{self.id}
+        return f'<Vehicle {self.name}-{self.id}>'
 
     def serialize(self):
         return {
@@ -124,3 +124,21 @@ class Vehicle(db.Model):
             "created" : self.created, 
             "edited" : self.edited
         }
+
+class UserPeopleFavorites(db.Model):
+    user_id = db.Column(db.Integer, db.ForeignKey(user.id), primary_key)
+    user = db.relationship("User")
+    people_id = db.Column(db.Integer, db.ForeignKey(people.id), primary_key)
+    people = db.relationship("People")
+
+class UserPlanetsFavorites(db.Model):
+    user_id = db.Column(db.Integer, db.ForeignKey(user.id), primary_key)
+    user = db.relationship("User")
+    planet_id = db.Column(db.Integer, db.ForeignKey(planet.id), primary_key)
+    planet = db.relationship("Planet")
+
+class UserVehiclesFavorites(db.Model):
+    user_id = db.Column(db.Integer, db.ForeignKey(user.id), primary_key)
+    user = db.relationship("User")
+    vehicle_id = db.Column(db.Integer, db.ForeignKey(vehicle.id), primary_key)
+    vehicle = db.relationship("Vehicle")
