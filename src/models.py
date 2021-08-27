@@ -126,19 +126,19 @@ class Vehicle(db.Model):
         }
 
 class UserPeopleFavorites(db.Model):
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), primary_key)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), primary_key=True)
     user = db.relationship("User")
-    people_id = db.Column(db.Integer, db.ForeignKey("people.id"), primary_key)
+    people_id = db.Column(db.Integer, db.ForeignKey("people.id"), primary_key=True)
     people = db.relationship("People")
 
 class UserPlanetsFavorites(db.Model):
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), primary_key)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), primary_key=True)
     user = db.relationship("User")
-    planet_id = db.Column(db.Integer, db.ForeignKey("planet.id"), primary_key)
+    planet_id = db.Column(db.Integer, db.ForeignKey("planet.id"), primary_key=True)
     planet = db.relationship("Planet")
 
 class UserVehiclesFavorites(db.Model):
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), primary_key)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), primary_key=True)
     user = db.relationship("User")
-    vehicle_id = db.Column(db.Integer, db.ForeignKey("vehicle.id"), primary_key)
+    vehicle_id = db.Column(db.Integer, db.ForeignKey("vehicle.id"), primary_key=True)
     vehicle = db.relationship("Vehicle")

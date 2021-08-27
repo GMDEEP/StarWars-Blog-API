@@ -8,7 +8,7 @@ from flask_swagger import swagger
 from flask_cors import CORS
 from utils import APIException, generate_sitemap
 from admin import setup_admin
-from models import db, User, People, Planet, Vehicle
+from models import db, User, People, Planet, Vehicle, UserPeopleFavorites, UserPlanetsFavorites, UserVehiclesFavorites
 #from models import Person
 
 app = Flask(__name__)
@@ -49,6 +49,7 @@ def handle_people():
 @app.route('/planet', methods=['GET'])
 def handle_planet():
     planet_query = Planet.query.all()
+    planet_query = Planet.query.filter_by(population > 3000)
     response_body = [x.serialize() for x in planet_query]
 
     return jsonify(response_body), 200
