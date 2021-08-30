@@ -46,10 +46,16 @@ def handle_people():
 
     return jsonify(response_body), 200
 
+@app.route('/people/<int:id>', methods=['GET'])
+def handle_person(id):
+    people_query = People.query.get(id)
+    response_body = people_query.serialize()
+
+    return jsonify(response_body), 200
+
 @app.route('/planet', methods=['GET'])
 def handle_planet():
     planet_query = Planet.query.all()
-    planet_query = Planet.query.filter_by(population > 3000)
     response_body = [x.serialize() for x in planet_query]
 
     return jsonify(response_body), 200
