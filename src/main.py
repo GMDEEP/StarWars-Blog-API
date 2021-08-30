@@ -60,10 +60,24 @@ def handle_planet():
 
     return jsonify(response_body), 200
 
+@app.route('/planet/<int:id>', methods=['GET'])
+def handle_worlds(id):
+    planet_query = Planet.query.get(id)
+    response_body = planet_query.serialize()
+
+    return jsonify(response_body), 200
+
 @app.route('/vehicle', methods=['GET'])
 def handle_vehicle():
     vehicle_query = Vehicle.query.all()
     response_body = [x.serialize() for x in vehicle_query]
+
+    return jsonify(response_body), 200
+
+@app.route('/vehicle/<int:id>', methods=['GET'])
+def get_vehicle(id):
+    vehicle_query = Vehicle.query.get(id)
+    response_body = vehicle_query.serialize()
 
     return jsonify(response_body), 200
 
